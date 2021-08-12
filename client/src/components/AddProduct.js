@@ -80,6 +80,7 @@ const AddProduct = ({array, changeStatus}) => {
             onClick={array === null ? addProduct : editProduct}
             variant="contained"
             color="primary"
+            // className={classes.submit}
           >{array === null ? 'Add Product' : 'Edit Product'}</Button>
     </form>
   </div>

@@ -14,6 +14,7 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   toolbar: {
-    paddingRight: 24, 
+    paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: 'flex',
@@ -102,10 +103,6 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
-  h1: {
-    textAlign: 'center'
-  },
-  fixedHeightTable: 600
 }));
 
 export default function Dashboard() {
@@ -119,7 +116,7 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeightTable);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const changeStatus = (value, obj) => {
     setStatus(value)
@@ -166,6 +163,7 @@ export default function Dashboard() {
         <Divider />
         <MainListItems changeStatus={changeStatus}/>
         <Divider />
+        {/* <List>{secondaryListItems}</List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -177,9 +175,9 @@ export default function Dashboard() {
                 <Chart />
               </Paper>
             </Grid>
+            {/* Recent Deposits */}
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                {status === 0 &&  <h1 className={classes.h1}>All Products</h1>}
                {status === 0 &&  <Product changeStatus={(value, obj)=>changeStatus(value, obj)} />}
                {status === 1 &&  <AddProduct changeStatus={(value, obj)=>changeStatus(value, obj)} 
                array={product} />}

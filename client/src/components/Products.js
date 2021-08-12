@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
-    }
+    },
   });
 const Product = ({changeStatus}) => {
     const classes = useStyles();
@@ -55,6 +55,7 @@ const Product = ({changeStatus}) => {
             },
             {
               label: 'No',
+              // onClick: () => alert('Click No')
             }
           ]
         });
